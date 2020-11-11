@@ -10,6 +10,7 @@ namespace Crowd_knowledge_contribution.Controllers
         // GET: Articles
         public ActionResult Index()
         {
+            //pagina cu toate
             ViewBag.Articles = m_database.Articles;
             return View();
         }
