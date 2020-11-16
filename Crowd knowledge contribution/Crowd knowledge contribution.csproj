@@ -189,6 +189,7 @@
     <Content Include="Views\Domains\Show.cshtml" />
     <Content Include="Views\Domains\Edit.cshtml" />
     <Content Include="Views\Domains\New.cshtml" />
+    <Content Include="Views\Articles\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011110842437_Initial.resx">

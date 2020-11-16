@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Crowd_knowledge_contribution.Models
 {
@@ -19,5 +20,7 @@ namespace Crowd_knowledge_contribution.Models
 
         public int DomainId { get; set; }
         public Domain Domain { get; set; }
+
+        public IEnumerable<SelectListItem> Dom { get; set; }
     }
 }
