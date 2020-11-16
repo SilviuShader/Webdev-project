@@ -5,13 +5,13 @@ namespace Crowd_knowledge_contribution.Controllers
 {
     public class ArticlesController : Controller
     {
-        readonly PlatformDbContext m_database = new PlatformDbContext();
+        private readonly PlatformDbContext _database = new PlatformDbContext();
 
         // GET: Articles
         public ActionResult Index()
         {
             //pagina cu toate
-            ViewBag.Articles = m_database.Articles;
+            ViewBag.Articles = _database.Articles.Include("Category");
             return View();
         }
     }

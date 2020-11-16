@@ -10,5 +10,6 @@ namespace Crowd_knowledge_contribution.Models
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
