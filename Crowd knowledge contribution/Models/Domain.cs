@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Crowd_knowledge_contribution.Models
 {
-    public class Category
+    public class Domain
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int DomainId { get; set; }
 
-        public string CategoryName { get; set; }
+        public string DomainName { get; set; }
 
         public virtual ICollection<Article> Articles { get; set; }
     }

@@ -11,7 +11,7 @@ namespace Crowd_knowledge_contribution.Controllers
         public ActionResult Index()
         {
             //pagina cu toate
-            ViewBag.Articles = _database.Articles.Include("Category");
+            ViewBag.Articles = _database.Articles.Include("Domain");
             return View();
         }
     }

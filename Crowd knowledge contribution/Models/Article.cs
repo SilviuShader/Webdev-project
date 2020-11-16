@@ -17,7 +17,7 @@ namespace Crowd_knowledge_contribution.Models
         public string Content { get; set; }
         public DateTime LastModified { get; set; }
 
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int DomainId { get; set; }
+        public Domain Domain { get; set; }
     }
 }
