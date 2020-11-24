@@ -11,5 +11,7 @@ namespace Crowd_knowledge_contribution.Models
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Domain> Domains { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
     }
 }
