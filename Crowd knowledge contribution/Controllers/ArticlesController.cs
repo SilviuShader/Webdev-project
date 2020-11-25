@@ -17,12 +17,15 @@ namespace Crowd_knowledge_contribution.Controllers
         {
             //pagina cu toate
             ViewBag.Articles = _database.Articles.Include("Domain");
+            ViewBag.Message = TempData["message"];
             return View();
         }
 
         public ActionResult Show(int id)
         {
             Article article = _database.Articles.Where(i => i.ArticleId == id).FirstOrDefault();
+            ICollection<Comment> comments = _database.Comments.Where(x => x.ArticleId == article.ArticleId).ToArray();
+            article.Comments = comments;
             //Article article = _database.Articles.Find(id,1);
             return View(article);
         }
@@ -39,6 +42,9 @@ namespace Crowd_knowledge_contribution.Controllers
         [HttpPost]
         public ActionResult New(Article article)
         {
+            var maxId = _database.Articles.Select(art => art.ArticleId).Prepend(0).Max();
+            article.ArticleId = maxId + 1;
+
             article.Dom = GetAllDomains();
             article.LastModified = DateTime.Now;
             article.VersionId = 1;
@@ -106,7 +112,11 @@ namespace Crowd_knowledge_contribution.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            Article article = _database.Articles.Where(i => i.ArticleId == id).FirstOrDefault();
+            var article = _database.Articles.Where(i => i.ArticleId == id).FirstOrDefault();
+            ICollection<Comment> comments = _database.Comments.Where(x => x.ArticleId == article.ArticleId).ToArray();
+            foreach (var comment in comments)
+                _database.Comments.Remove(comment);
+
             _database.Articles.Remove(article);
             _database.SaveChanges();
             TempData["message"] = "Articolul a fost sters";
