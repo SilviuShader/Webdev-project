@@ -8,9 +8,9 @@ namespace Crowd_knowledge_contribution.Models
 {
     public class Article
     {
-        [Key, Column(Order = 1)] 
+        [Key, Column(Order = 0)] 
         public int ArticleId { get; set; }
-        [Key, Column(Order = 2)] 
+        [Key, Column(Order = 1)] 
         public int VersionId { get; set; }
 
         [Required(ErrorMessage = "Titlul este obligatoriu")]

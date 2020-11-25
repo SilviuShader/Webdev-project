@@ -17,18 +17,10 @@ namespace Crowd_knowledge_contribution.Controllers
             return View();
         }
 
-        [HttpDelete]
-        public ActionResult Delete(int id)
-        {
-            Comment comm = db.Comments.Find(id);
-            db.Comments.Remove(comm);
-            db.SaveChanges();
-            return Redirect("/Articles/Show/" + comm.ArticleId);
-        }
-
         [HttpPost]
         public ActionResult New(Comment comm)
         {
+            //comm.VersionId = 1;
             comm.Date = DateTime.Now;
             try
             {
@@ -42,6 +34,15 @@ namespace Crowd_knowledge_contribution.Controllers
                 return Redirect("/Articles/Show/" + comm.ArticleId);
             }
 
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Comment comm = db.Comments.Find(id);
+            db.Comments.Remove(comm);
+            db.SaveChanges();
+            return Redirect("/Articles/Show/" + comm.ArticleId);
         }
 
         public ActionResult Edit(int id)
